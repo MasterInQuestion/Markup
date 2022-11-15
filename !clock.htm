@@ -1,0 +1,215 @@
+<!DOCTYPE html> <!-- Must be specified lest serious malfunction in IE8 (probably IE10 and below). -->
+<meta charset="UTF-8" />
+<title>!Clock</title>
+<!--
+
+	JavaScript based digital clock. ("Date" API based)
+	Highly customizable.
+
+	Intended to just work with random browsers.
+
+-->
+<noscript>
+<pre style="white-space: pre-wrap; word-wrap: break-word; tab-size: 4">
+	JavaScript support required.
+	Check the unrendered source for details.
+</pre>
+</noscript>
+
+<script>
+	getElementById = function ( x, id ) {
+// ---- BEGIN (0)
+	var x0 = ( ! /^\d+$/.test( id ) ?
+	x.children[id] : /* While numeric id cause misbehaviors in major implementations. */
+	x.children.namedItem( id ) ); // "HTMLCollection.namedItem" is case-insensitive in IE.
+
+	if ( x0 ) {
+	return x0;
+
+	} else if ( x === undefined ) {
+	return;
+	}; // Using "if ... else ..." here is not merely a preference.
+
+	for ( var i = 0; i < x.children.length; ++ i ) {
+	if ( x0 = getElementById( x.children[i], id ) ) { return x0; };
+	};
+// ---- END (0)
+	};
+
+
+// ----
+
+
+	onload = function () {
+// ---- BEGIN (0)
+	function tzparse ( x, i ) {
+// ---- BEGIN (1)
+	var _ = getElementById( x, "tz" ), _ = ( _ ? _.innerText : "" );
+//
+//	Merely demonstrating the syntax.
+//	The "," in JavaScript is much semantical non-sense. (replaceable by ";")
+//
+//	RegEx reference: https://regex101.com/?regex=^(%5B%2B%5C-%5D)(%5Cd%7B2%7D):(%5Cd%7B2%7D)%24&flags=
+//
+	if ( _ = _.match( /^([+\-])(\d{2}):(\d{2})$/ ) ) {
+	tz[i] = ( _[1] === "+" ? {
+	h: Number( _[2] ),
+	m: Number( _[3] )
+	} : {
+	h: - Number( _[2] ),
+	m: - Number( _[3] )
+	} );
+
+	} else {
+	tz[i] = { h: 0, m: 0 };
+	};
+
+	tz[i] = [ tz[i] ].concat( [
+	getElementById( x, "Y" ),
+	getElementById( x, "M" ),
+	getElementById( x, "D" ),
+	getElementById( x, "h" ),
+	getElementById( x, "m" ),
+	getElementById( x, "s" ),
+	getElementById( x, "d" )
+	] );
+// ---- END (1)
+	};
+
+	window.tz = []; // Not prefixing "window." failed in IE8 and IE6.
+	{
+	var
+	x = document.getElementById( "0" ),
+	n = 0 }; // "n" works as intended.
+
+	if ( x ) {
+	tzparse( x, 0 );
+	n = 1;
+	};
+
+	try {
+	x = document.getElementById( "1" ).children;
+	for ( var i = 0; i < x.length; ++ i ) {
+	tzparse( x[i], i + n );
+	};
+
+	} catch ( e ) {
+	};
+
+	init();
+	setInterval( init, 1000 );
+
+	( document.body ) || (
+	document.body = document.getElementsByTagName( "body" )[0]
+	);
+	document.body.children[0].style.display = "block";
+// ---- END (0)
+	};
+
+
+	function init () {
+// ---- BEGIN (0)
+	for ( var i = 0; i < tz.length; ++ i ) {
+// ---- BEGIN (1)
+	var t = new Date();
+	t.setUTCHours(
+	( t.getUTCHours() + tz[i][0]["h"] ),
+	( t.getUTCMinutes() + tz[i][0]["m"] ) );
+
+	tz[i][1].innerText = t.getUTCFullYear();
+	tz[i][2].innerText = _0( t.getUTCMonth() + 1 );
+	tz[i][3].innerText = _0( t.getUTCDate() );
+	tz[i][4].innerText = _0( t.getUTCHours() );
+	tz[i][5].innerText = _0( t.getUTCMinutes() );
+	tz[i][6].innerText = _0( t.getUTCSeconds() );
+	( tz[i][7] ) && ( tz[i][7].innerText = t.getUTCDay() );
+//
+//	"," may be of use under similar contexts.
+//	For support for block statement "{ ... }" [1] under such is broken.
+//
+// [1] Caveat "{ ... }" in JavaScript may also mean Object notation depending on the context.
+//
+// ---- END (1)
+	};
+
+	function _0 ( num ) {
+	return String( num > 9 ? num : "0" + num );
+	};
+// ---- END (0)
+	};
+</script>
+
+
+<style>
+	html { background-color: #000; color: #FFF; } /* Contrast */
+	html { background-color: #e6e6e6; color: #146c9c; } /* Bright */
+	html { background-color: #283e59; color: #dcf2e8; } /* Mid */
+	html { background-color: #0c1d18; color: #acbeb6; } /* Dark */
+/* Last occurrence of repetitive definitions takes precedence. */
+
+	div.body > div {
+	text-align: center;
+	} /* IE6 doesn't support CSS combinators. */
+/* Workaround: Change the selector definition to `body`. */
+
+	.up { font-size: 200%; }
+	.dn { font-size: 50%; }
+	.thin { opacity: 0.35; }
+</style>
+<!--
+
+	Adjust "font-size" on need.
+
+	"vw" unit doesn't work on too old browsers.
+
+-->
+<div class="body" style="
+	display: none; /* Overridden upon `onload`. */
+	white-space: nowrap;
+	font-family: monospace;
+	font-size: 5.5vw;
+">
+	<div id="0" class="up"><br/>
+<!--
+
+	Main clock.
+	Modify "#tz" to change time zone.
+	.
+	See "tzparse" for time zone parsing logic.
+
+-->
+	CE <span id="Y"></span>-<span id="M"></span>-<span id="D"></span><br/>
+
+	<div style="font-size: 200%">
+	<span id="h"></span><span class="dn">:</span><span id="m"></span><span class="dn">:</span><span id="s"></span><br/>
+	</div>
+
+	<div class="dn">
+	<span id="tz" style="font-size: 120%">+08:00</span><br/>
+	<span class="thin">(</span>Day <span id="d"></span><span class="thin">)</span>
+	</div>
+	</div>
+
+<hr/>
+<!--
+
+	Auxiliary clocks.
+	Adapt the elements inside to configure.
+
+	"#1" is also removable.
+
+	"Element.children" in IE8 and below also counts XML comments.
+
+-->
+	<div id="1" class="body">
+	<div><br/>CE <span id="Y"></span>-<span id="M"></span>-<span id="D"></span> <span id="h"></span>:<span id="m"></span>:<span id="s"></span> <span id="tz">UTC</span></div>
+	<div><br/>CE <span id="Y"></span>-<span id="M"></span>-<span id="D"></span> <span id="h"></span>:<span id="m"></span>:<span id="s"></span> <span id="tz">-07:00</span></div>
+	</div>
+</div>
+<!--
+
+	References:
+	|*| https://developer.mozilla.org/en-US/search?q=${Term}
+	|*| https://caniuse.com/?search=${Term}
+
+-->
