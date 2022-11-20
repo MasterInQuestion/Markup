@@ -109,11 +109,11 @@
 
 	function init () {
 // ---- BEGIN (0)
-	var _ = new Date();
+	(function ( x ) {
 	var i = 0;
 	for ( ; i < tz.length; ) {
 // ---- BEGIN (1)
-	var t = new Date( _ );
+	var t = new Date( x );
 	t.setUTCHours(
 	( t.getUTCHours() + tz[i][0]["h"] ),
 	( t.getUTCMinutes() + tz[i][0]["m"] ) );
@@ -133,7 +133,10 @@
 //
 	++ i;
 // ---- END (1)
-	};
+	}; })( new Date() );
+//
+//	`(function () { ... })();` form somewhat resembles the isolated block structure in some other languages. (which might be simply expressed as `{ ... };`)
+//
 
 	function _0 ( num ) {
 	return String( num > 9 ? num : "0" + num );
