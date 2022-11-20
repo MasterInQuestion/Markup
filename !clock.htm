@@ -109,9 +109,11 @@
 
 	function init () {
 // ---- BEGIN (0)
-	for ( var i = 0; i < tz.length; ++ i ) {
+	var _ = new Date();
+	var i = 0;
+	for ( ; i < tz.length; ) {
 // ---- BEGIN (1)
-	var t = new Date();
+	var t = new Date( _ );
 	t.setUTCHours(
 	( t.getUTCHours() + tz[i][0]["h"] ),
 	( t.getUTCMinutes() + tz[i][0]["m"] ) );
@@ -129,6 +131,7 @@
 //
 // [1] Caveat "{ ... }" in JavaScript may also mean Object notation depending on the context.
 //
+	++ i;
 // ---- END (1)
 	};
 
