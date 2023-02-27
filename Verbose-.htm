@@ -1,0 +1,53 @@
+<meta charset="UTF-8" />
+	<style>
+/* -- BEGIN (0) */
+
+	._0 { border-bottom: 0.1em solid #0969da; }
+	._1 { border-bottom: 0.1em solid #1a7f37; }
+	._2 { border-bottom: 0.1em solid #9a6700; }
+	._3 { border-bottom: 0.1em solid #cf222e; }
+	._4 { border-bottom: 0.1em solid #bf3989; }
+	._5 { border-bottom: 0.1em solid #8250df; }
+	._6 { border-bottom: 0.1em solid #0a3069; }
+	._7 { border-bottom: 0.1em solid #ff7b72; }
+	._8 { border-bottom: 0.1em solid #7f7f7f; }
+	._9 { border-bottom: 0.1em solid #79c0ff; }
+	._10 { border-bottom: 0.1em solid #56d364; }
+	._11 { border-bottom: 0.1em solid #e3b341; }
+
+/* Adjacent sibling combinator (`m + m { ... }`) wouldn't work properly under this context. (white-space between elements ignored) */
+	.s { margin-left: 0.1em; }
+	.x { margin-left: 0.1em; border-bottom-style: dashed; }
+
+/* -- END (0) */
+	</style>
+
+<pre style="white-space: pre-wrap; word-wrap: break-word; tab-size: 4">
+	<m class="_0">这些</m><m class="_1 s">诗</m><m class="_2">句</m><m class="_3 s">所呈</m><m class="_3 x">现的一幅</m>: <m class="_4">人人</m><m class="_5 s">自由</m><m class="_6 s">平等</m>, <m class="_7">百姓</m><m class="_8 s">安居乐业</m><m class="_8 x">的美好图景</m>: <m class="_9">跃然</m><m class="_10 s">纸</m><m class="_11 s">上</m>.
+-	<m class="_0">这些</m><m class="_1 s">诗</m><m class="_2">句</m><m class="_3 s">所呈</m><m class="_3 x">现的</m>: <m class="_4">人人</m><m class="_5 s">自由</m><m class="_6 s">平等</m>, <m class="_7">百姓</m><m class="_8 s">安居乐业</m>: <m class="_9">跃然</m><m class="_10 s">纸</m><m class="_11 s">上</m>.
+!	<m class="_0">此</m><m class="_1 s">诗</m><m class="_3 s">所呈</m>: <m class="_4">人人</m><m class="_5 s">自由</m><m class="_6 s">平等</m>, <m class="_7">百姓</m><m class="_8 s">安居乐业</m>: <m class="_9">跃然</m><m class="_10 s">纸</m><m class="_11 s">上</m>. [1]
++	<m class="_0">These</m> <m class="_1">poetic</m><m class="_2"> lines</m> <m class="_3">depicted</m>: <m class="_4">everyone</m> of <m class="_5">liberty</m> <m class="_6">egality</m>, <m class="_7">people all</m> <m class="_8">living in fraternity and joy</m>: <m class="_9">vivid</m><m class="_9 x"> right</m> <m class="_11">on</m> <m class="_10">paper</m>.
+
+[ [1]
+	"( <m class="_0">This</m> <m class="_1">poem</m> | <m class="_0">These</m> <m class="_1">poems</m> ) <m class="_3">presented</m>: ..."
+	There's no explicit plural notation in Chinese. ]
+</pre>
+<!--
+
+	这些诗句所呈现的一幅: 人人自由平等, 百姓安居乐业的美好图景: 跃然纸上.
+-	这些诗句所呈现的: 人人自由平等, 百姓安居乐业: 跃然纸上.
+!	此诗所呈: 人人自由平等, 百姓安居乐业: 跃然纸上. [1]
++	These poetic lines depicted: everyone of liberty egality, people all living in fraternity and joy: vivid right on paper.
+
+[ [1]
+	"( This poem | These poems ) presented: ..."
+	There's no explicit plural notation in Chinese. ]
+
+-->
+<!--
+
+	See also:
+	|*| "Verbose.htm"
+	|*| "Markup Intro.htm"
+
+-->
