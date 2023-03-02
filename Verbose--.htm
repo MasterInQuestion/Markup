@@ -1,0 +1,50 @@
+<meta charset="UTF-8" />
+	<style>
+/* -- BEGIN (0) */
+
+	o0, c0 { border-bottom: 0.1em solid #79c0ff; }
+	o1, c1 { border-bottom: 0.1em solid #56d364; }
+	o2, c2 { border-bottom: 0.1em solid #e3b341; }
+	o3, c3 { border-bottom: 0.1em solid #ff7b72; }
+	o4, c4 { border-bottom: 0.1em solid #ff9bce; }
+	o5, c5 { border-bottom: 0.1em solid #ffa657; }
+	o6, c6 { border-bottom: 0.1em solid #8250df; }
+	o7, c7 { border-bottom: 0.1em solid #cf222e; }
+	o8, c8 { border-bottom: 0.1em solid #bf3989; }
+
+	c0, c1, c2, c3, c4, c5, c6, c7, c8 {
+	margin-left: 0.1em;
+	}
+
+/* -- END (0) */
+	</style>
+
+<pre style="white-space: pre-wrap; word-wrap: break-word; tab-size: 4">
+	<o0>宏</o0><c1>出</c1><c2>之</c2><c3>东方</c3>兮: <o4>虹</o4><c5>之</c5><c6>赫赫</c6>.
++	<o0>Greatness</o0> <o1>out</o1> <o2>from</o2> the <o3>East</o3>: <o4>Rainbow</o4> <o5>so</o5> <o6>magnificent</o6>.
+	<o4>虹</o4><c1>出</c1><c2>之</c2><c3>东方</c3>兮: <o7>红</o7><c5>之</c5><c8>然然</c8>.
++	<o4>Rainbow</o4> <o1>out</o1> <o2>from</o2> the <o3>East</o3>: <o7>Red</o7> <o5>so</o5> <o8>vivid</o8>.
+	<o7>红</o7><c1>出</c1><c2>之</c2><c3>东方</c3>兮: <o0>弘之旦旦</o0>.
++	<o7>Red</o7> <o1>out</o1> <o2>from</o2> the <o3>East</o3>: <o0>Declarative so clear</o0>.
+</pre>
+<!--
+
+	宏出之东方兮: 虹之赫赫.
++	Greatness out from the East: Rainbow so magnificent.
+	虹出之东方兮: 红之然然.
++	Rainbow out from the East: Red so vivid.
+	红出之东方兮: 弘之旦旦.
++	Red out from the East: Declarative so clear.
+
+
+In Mandarin Pinyin:
+	Hóng chū zhī Dōng Fāng xī: Hóng zhī hè hè.
+	Hóng chū zhī Dōng Fāng xī: Hóng zhī rán rán.
+	Hóng chū zhī Dōng Fāng xī: Hóng zhī dàn dàn.
+
+----
+
+	After s/<(\/?)[oc](\d+)>/<${1}${2}>/g, we have significant readability improvement.
+	[ Demo: https://regex101.com/?regex=%3C(%5C/?)%5Boc%5D(%5Cd%2B)>&subst=%3C%24%7B1%7D%24%7B2%7D>&flags=g ]
+
+-->
