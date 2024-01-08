@@ -27,7 +27,8 @@
 	x.children.namedItem( id ) ); // "HTMLCollection.namedItem" is case-insensitive in IE.
 
 	if ( x0 ) {
-	return x0;
+	return ( ! x0[1] ? x0 : x0[0] );
+// And may return more than just the first element if multiple ones eligible...
 
 	} else if ( x === undefined ) {
 	return;
