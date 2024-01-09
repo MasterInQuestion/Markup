@@ -151,6 +151,7 @@
 
 
 <style>
+	q { quotes: none; }
 	html { background-color: #000; color: #FFF; } /* Contrast */
 	html { background-color: #e6e6e6; color: #146c9c; } /* Bright */
 	html { background-color: #283e59; color: #dcf2e8; } /* Mid */
@@ -188,15 +189,15 @@
 	See "tzparse" for time zone parsing logic.
 
 -->
-	CE <span id="Y"></span>-<span id="M"></span>-<span id="D"></span><br/>
+	CE <q id="Y"></q>-<q id="M"></q>-<q id="D"></q><br/>
 
 	<div style="font-size: 200%">
-	<span id="h"></span><span class="dn">:</span><span id="m"></span><span class="dn">:</span><span id="s"></span><br/>
+	<q id="h"></q><q class="dn">:</q><q id="m"></q><q class="dn">:</q><q id="s"></q><br/>
 	</div>
 
 	<div class="dn">
-	<span id="tz" style="font-size: 120%">+08:00</span><br/>
-	<span class="thin">(</span>Day <span id="d" style="font-size: 120%; vertical-align: -5%"></span><span class="thin">)</span>
+	<q id="tz" style="font-size: 120%">+08:00</q><br/>
+	<q class="thin">(</q>Day <q id="d" style="font-size: 120%; vertical-align: -5%"></q><q class="thin">)</q>
 	</div>
 	</div>
 
@@ -212,8 +213,8 @@
 
 -->
 	<div id="1" class="body">
-	<div><br/>CE <span id="Y"></span>-<span id="M"></span>-<span id="D"></span> <span id="h"></span>:<span id="m"></span>:<span id="s"></span> <span id="tz">UTC</span></div>
-	<div><br/>CE <span id="Y"></span>-<span id="M"></span>-<span id="D"></span> <span id="h"></span>:<span id="m"></span>:<span id="s"></span> <span id="tz">-07:00</span></div>
+	<div><br/>CE <q id="Y"></q>-<q id="M"></q>-<q id="D"></q> <q id="h"></q>:<q id="m"></q>:<q id="s"></q> <q id="tz">UTC</q></div>
+	<div><br/>CE <q id="Y"></q>-<q id="M"></q>-<q id="D"></q> <q id="h"></q>:<q id="m"></q>:<q id="s"></q> <q id="tz">-07:00</q></div>
 	</div>
 </div>
 <!--
