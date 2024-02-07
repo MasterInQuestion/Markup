@@ -33,7 +33,15 @@
 	} else if ( x === undefined ) {
 	return;
 	}; // Using "if ... else ..." here is ~~not~~ merely a preference. [ No difference observed. Nor possible semantically. ]
+/*
 
+[[
+	( x0 ) && return ( ! x0[1] ? x0 : x0[0] );
+	( x === undefined ) && return;
+]]
+	“Unexpected token "return"”
+
+*/
 	for ( var i = 0; i < x.children.length; ++ i ) {
 	if ( x0 = getElementById( x.children[i], id ) ) { return x0; };
 	};
