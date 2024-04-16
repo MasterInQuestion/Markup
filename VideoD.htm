@@ -9,6 +9,7 @@
 	( 'code: ' + this.error.code + ', message: ' + this.error.message ) );
 	"
 	onloadstart="
+	document.body || ( document.body = document.getElementsByTagName( 'body' )[0] );
 	this._0 = true;
 // ^ Lock variable for handling race condition of repeatedly calling rapidly.
 	this._f = function ( x0, x1, x2 ) {
