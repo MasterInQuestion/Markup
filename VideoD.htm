@@ -14,6 +14,7 @@
 	this._0 = true;
 // ^ Lock variable for handling race condition of repeat calling rapidly.
 	this._f = function ( x0, x1, x2 ) {
+	( typeof x1 !== 'object' ) || ( x2 = x1 );
 	( this._0 ) && (
 	this._0 = false,
 	setTimeout( this._f, 100,
@@ -21,16 +22,18 @@
 	document.body.style.opacity, this )
 	);
 	document.documentElement.style.backgroundColor = x0;
-	document.body.style.opacity = x1;
+	document.body.style.opacity = (
+	typeof x1 === 'undefined' ||
+	typeof x1 === 'object' ? 0.6 : x1 );
 	( x2 ) && ( x2._0 = true );
 	};
 	"
 	onplay="
 	console.log( ( this._ = new Date() ).toISOString() );
-	this._f( '#F0F', 0.6 );
+	this._f( '#F0F' );
 	"
 	onpause="
-	this._f( '#0F0', 0.6 );
+	this._f( '#0F0' );
 	"
 	onended="
 	prompt( 'Video ended.\nSeconds elapsed since last &quot;play&quot;:',
