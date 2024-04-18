@@ -9,6 +9,16 @@
 	prompt( 'MediaError',
 	( 'code: ' + this.error.code + ', message: ' + this.error.message ) );
 	"
+	onplay="
+	console.log( ( this._ = new Date() ).toISOString() );
+	this._f( '#F0F' );"
+	onpause="this._f( '#0F0' );"
+	onseeking="this._f( '#0FF' );
+	"
+	onended="
+	prompt( 'Video ended.\nSeconds elapsed since last &quot;play&quot;:',
+	( (new Date() - this._) / 1000 ) );
+	"
 	onloadstart="
 	document.body || ( document.body = document.getElementsByTagName( 'body' )[0] );
 	this._0 = true;
@@ -26,17 +36,6 @@
 	/^(?:undefined|object)$/.test( typeof x1 ) ? 0.6 : x1 );
 	( x2 ) && ( x2._0 = true );
 	};
-	"
-	onplay="
-	console.log( ( this._ = new Date() ).toISOString() );
-	this._f( '#F0F' );
-	"
-	onpause="
-	this._f( '#0F0' );
-	"
-	onended="
-	prompt( 'Video ended.\nSeconds elapsed since last &quot;play&quot;:',
-	( (new Date() - this._) / 1000 ) );
 	"
 ></video>
 <!--
