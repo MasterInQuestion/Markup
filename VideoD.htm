@@ -1,8 +1,9 @@
 <meta charset="UTF-8" />
 <video playsinline controls style="
-	width: 100%; height: 48px;
-	z-index: 2147483647; position: fixed; top: 0;
-" src=""
+	width: 100%; z-index: 2147483647;
+	position: fixed; left: 0; top: 0;
+/* ↓ Replace `src` with whatsoever. */ "
+	src="tablet-tab-strip-3.webm"
 
 	onerror="
 	prompt( 'MediaError',
@@ -11,8 +12,14 @@
 	onloadstart="
 	document.body || ( document.body = document.getElementsByTagName( 'body' )[0] );
 	this._0 = true;
-// ^ Lock variable for handling race condition of repeatedly calling rapidly.
+// ^ Lock variable for handling race condition of repeat calling rapidly.
 	this._f = function ( x0, x1, x2 ) {
+	( this._0 ) && (
+	this._0 = false,
+	setTimeout( this._f, 100,
+	document.documentElement.style.backgroundColor,
+	document.body.style.opacity, this )
+	);
 	document.documentElement.style.backgroundColor = x0;
 	document.body.style.opacity = x1;
 	( x2 ) && ( x2._0 = true );
@@ -20,13 +27,10 @@
 	"
 	onplay="
 	console.log( ( this._ = new Date() ).toISOString() );
-	( this._0 ) && (
-	this._0 = false,
-	setTimeout( this._f, 100,
-	document.documentElement.style.backgroundColor,
-	document.body.style.opacity, this )
-	);
 	this._f( '#F0F', 0.6 );
+	"
+	onpause="
+	this._f( '#0F0', 0.6 );
 	"
 	onended="
 	prompt( 'Video ended.\nSeconds elapsed since last &quot;play&quot;:',
