@@ -23,8 +23,7 @@
 	);
 	document.documentElement.style.backgroundColor = x0;
 	document.body.style.opacity = (
-	typeof x1 === 'undefined' ||
-	typeof x1 === 'object' ? 0.6 : x1 );
+	/^(?:undefined|object)$/.test( typeof x1 ) ? 0.6 : x1 );
 	( x2 ) && ( x2._0 = true );
 	};
 	"
@@ -40,3 +39,19 @@
 	( (new Date() - this._) / 1000 ) );
 	"
 ></video>
+<!--
+
+	Summary of the "_f" logic:
+	Expects 1 - 3 arguments:
+	"x0": Color of "document.documentElement" ("<html>") 's "background-color" to override.
+	"x1": [
+	May be either the transparency ("opacity") of the cloak; or the Element object.
+	When "opacity" unspecified: default 0.6. ]
+	"x2": The Element object of interoperation. (host Element)
+
+	Difference between applying style on "<html>" vs. "<body>":
+	"<html>": The whole viewport.
+	"<body>": The body content. (not necessarily full viewport)
+	For some browsers (primarily modern ones) there's no difference: style on "<body>" as on "<html>" equivalent.
+
+-->
