@@ -1,6 +1,13 @@
 <meta charset="UTF-8" />
 <title>picdif - diff 2 pictures by overlaying</title>
 <!-- Side by side without JavaScript -->
+<html onclick="toggle();" onkeydown="return kbd_toggle( event );">
+<!--
+	Trick simulating "preventDefault": Broader browser compatibility.
+	Must be specified so. (may not work merely specified in "onkeydown" function)
+
+	"event" here is context-dependent multi-meaning. (don't change its name)
+-->
 <meta name="viewport" content="initial-scale=1" />
 <style>
 	html { background-color: #002b36; }
@@ -11,15 +18,8 @@
 	[id="1"] { background-color: #0F0; }
 */
 </style>
-<body onkeydown="return kbd_toggle( event );">
-<!--
-	Trick simulating "preventDefault": Broader browser compatibility.
-	Must be specified so. (may not work merely specified in "onkeydown" function)
-
-	"event" here is context-dependent multi-meaning. (don't change its name)
--->
-	<img id="0" src="" onclick="toggle0();" />
-	<img id="1" src="" onclick="toggle1();" />
+	<img id="0" src="" />
+	<img id="1" src="" />
 <script>
 	_0 = document.getElementById( "0" );
 	_1 = document.getElementById( "1" );
@@ -29,16 +29,15 @@
 	_1.style.display = "none";
 	};
 
-	function toggle0 () {
-	_0.style.display = "none";
-	_1.style.display = "inline";
-	toggleTitle( _1 );
-	};
-
-	function toggle1 () {
-	_1.style.display = "none";
-	_0.style.display = "inline";
-	toggleTitle( _0 );
+	function toggle () {
+	_1.style.display === "none" ? (
+	_0.style.display = "none",
+	_1.style.display = "inline",
+	toggleTitle( _1 ) )
+	: (
+	_1.style.display = "none",
+	_0.style.display = "inline",
+	toggleTitle( _0 ) );
 	};
 
 	function toggleTitle ( x ) {
@@ -53,8 +52,7 @@
 	e.keyCode === 0x20 ||
 	e.which === 0x20 /* 【Space】 */
 	) {
-	_1.style.display === "none" ?
-	toggle0() : toggle1();
+	toggle();
 	return false;
 	};
 	return true;
