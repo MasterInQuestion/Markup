@@ -1,14 +1,36 @@
 <meta charset="UTF-8" />
 <title>picdif - diff 2 pictures by overlaying</title>
 <!-- Side by side without JavaScript -->
-<html onclick="toggle();" onkeydown="return kbd_toggle( event );">
+<html onclick="toggle();" ontouchend="
+// Unnecessary for Firefox (or non-touch input): removal may improve reliability.
+	if ( event.touches.length === 0 ) {
+/*
+	`touches` appears buggy:
+	https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches
+	(apparent misalignment; likely unfixable at this point)
+*/
+	var X = _X, Y = _Y;
+	_X = event.changedTouches[0].screenX;
+	_Y = event.changedTouches[0].screenY;
+	if (
+	_ - ( _ = event.timeStamp ) >= -500 &&
+	Math.abs( _X - X ) <= 16 &&
+	Math.abs( _Y - Y ) <= 16 || !( _X || _Y )
+	) { toggle(); return false; };
+// Mainly to workaround double-click zooming on some mobile browsers.
+	};
+	"
+	onkeydown="return kbd_toggle( event );">
 <!--
 	Trick simulating "preventDefault": Broader browser compatibility.
 	Must be specified so. (may not work merely specified in "onkeydown" function)
 
 	"event" here is context-dependent multi-meaning. (don't change its name)
 -->
-<meta name="viewport" content="initial-scale=1" />
+<meta name="viewport" content="initial-scale=1" /><!--
+<meta name="viewport" content="initial-scale=1, user-scalable=no" />
+	https://github.com/MasterInQuestion/Markup/commit/47793e7005d838a6eafdf2289b2cb4100178e12e
+-->
 <style>
 	html { background-color: #002b36; }
 	body { display: inline-block; margin: 5em;
@@ -22,6 +44,7 @@
 	<img id="0" src="" />
 	<img id="1" src="" />
 <script>
+	_ = _X = _Y = 0;
 	_0 = document.getElementById( "0" );
 	_1 = document.getElementById( "1" );
 
