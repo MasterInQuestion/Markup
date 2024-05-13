@@ -49,8 +49,22 @@
 	_ = _X = _Y = 0;
 	_0 = document.getElementById( "0" );
 	_1 = document.getElementById( "1" );
+	getTitle( _0 ); getTitle( _1 );
 
-	onload = toggle;
+	function getTitle ( x ) {
+	x.title = "#" + x.id + " " +
+	decodeURIComponent( x.src.match( /(?:\/|^)([^\/]*)\/*$/ )[1] );
+	};
+
+	onload = function () {
+	_0.onload = _0.onerror =
+	_1.onload = _1.onerror = function ( x ) {
+	x = x.target;
+	getTitle( x );
+	( x.style.display !== "none" ) && ( document.title = x.title );
+	};
+	toggle();
+	};
 
 	function toggle () {
 	_1.style.display === "none" ? (
@@ -64,8 +78,7 @@
 	};
 
 	function toggleTitle ( x ) {
-	document.title = "#" + x.id + " " +
-	decodeURIComponent( x.src.match( /(?:\/|^)([^\/]*)\/*$/ )[1] );
+	document.title = x.title;
 //	location.replace( location.href.replace( /(?:#.*)?$/, "#" + x.id ) );
 // ^ May cause unwanted viewport jump.
 	};
