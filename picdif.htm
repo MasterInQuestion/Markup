@@ -50,10 +50,7 @@
 	_0 = document.getElementById( "0" );
 	_1 = document.getElementById( "1" );
 
-	onload = function () {
-	toggleTitle( _0 );
-	_1.style.display = "none";
-	};
+	onload = toggle;
 
 	function toggle () {
 	_1.style.display === "none" ? (
