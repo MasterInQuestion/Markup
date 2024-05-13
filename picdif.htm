@@ -3,7 +3,7 @@
 <!-- Side by side without JavaScript -->
 <html onclick="toggle();" ontouchend="
 // Unnecessary for Firefox (or non-touch input): removal may improve reliability.
-	if ( event.touches.length === 0 ) {
+	if ( ! _m && event.touches.length === 0 ) {
 /*
 	`touches` appears buggy:
 	https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches
@@ -18,8 +18,9 @@
 	Math.abs( _Y - Y ) <= 16 || !( _X || _Y )
 	) { toggle(); return false; };
 // Mainly to workaround double-click zooming on some mobile browsers.
-	};
+	}; _m = false;
 	"
+	ontouchmove="_m = true;"
 	onkeydown="return kbd_toggle( event );">
 <!--
 	Trick simulating "preventDefault": Broader browser compatibility.
@@ -44,6 +45,7 @@
 	<img id="0" src="" />
 	<img id="1" src="" />
 <script>
+	var _m; // Not defining this pointless undefined may cause misbehavior...
 	_ = _X = _Y = 0;
 	_0 = document.getElementById( "0" );
 	_1 = document.getElementById( "1" );
