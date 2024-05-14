@@ -57,13 +57,15 @@
 	};
 
 	onload = function () {
-	_0.onload = _0.onerror =
-	_1.onload = _1.onerror = function ( x ) {
-	x = x.target;
+	_0.onload = _0.onerror = function () { f( _0 ); };
+	_1.onload = _1.onerror = function () { f( _1 ); };
+// "loadstart" maybe unavailable for "<img>".
+	function f ( x ) {
 	getTitle( x );
 	( x.style.display !== "none" ) && ( document.title = x.title );
 	};
-	toggle();
+	( _0.style.display !== "none" &&
+	_1.style.display !== "none" ) && toggle();
 	};
 
 	function toggle () {
