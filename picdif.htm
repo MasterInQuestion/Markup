@@ -89,6 +89,13 @@
 	if (
 	e.keyCode === 0x20 ||
 	e.which === 0x20 /* 【Space】 */
+/*
+	Call it non-standard whatsoever whatever you like:
+	It works, reliably across browsers:
+	Far more than those so called standard ways.
+
+	Related: https://github.com/microsoft/vscode/issues/163432#issuecomment-1312029773
+*/
 	) {
 	toggle();
 	return false;
