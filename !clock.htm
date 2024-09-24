@@ -22,7 +22,7 @@
 
 <script>
 	getElementById = function ( x, id ) {
-// ---- BEGIN (0)
+// >>>> (0)
 	var x0 = ( ! /^\d+$/.test( id ) ?
 	x.children[id] : /* While numeric id cause misbehaviors in major implementations. */
 	x.children.namedItem( id ) ); // "HTMLCollection.namedItem" is case-insensitive in IE.
@@ -46,7 +46,7 @@
 	for ( var i = 0; i < x.children.length; ++ i ) {
 	if ( x0 = getElementById( x.children[i], id ) ) { return x0; };
 	};
-// ---- END (0)
+// <<<< (0)
 	};
 
 
@@ -54,9 +54,9 @@
 
 
 	onload = function () {
-// ---- BEGIN (0)
+// >>>> (0)
 	function tzparse ( x, i ) {
-// ---- BEGIN (1)
+// >>>> (1)
 	var _ = getElementById( x, "tz" ), _ = ( _ ? _.innerText : "" );
 //
 //	Merely demonstrating the syntax.
@@ -86,7 +86,7 @@
 	getElementById( x, "s" ),
 	getElementById( x, "d" )
 	] );
-// ---- END (1)
+// <<<< (1)
 	};
 
 	window.tz = []; // Not prefixing "window." failed in IE8 and IE6.
@@ -116,16 +116,16 @@
 	document.body = document.getElementsByTagName( "body" )[0]
 	);
 	document.body.children[0].style.display = "block";
-// ---- END (0)
+// <<<< (0)
 	};
 
 
 	function init () {
-// ---- BEGIN (0)
+// >>>> (0)
 	(function ( x ) {
 	var i = 0;
 	for ( ; i < tz.length; ) {
-// ---- BEGIN (1)
+// >>>> (1)
 	var t = new Date( x );
 	t.setUTCHours(
 	( t.getUTCHours() + tz[i][0]["h"] ),
@@ -145,7 +145,7 @@
 // [1] Caveat "{ ... }" in JavaScript may also mean Object notation depending on the context.
 //
 	++ i;
-// ---- END (1)
+// <<<< (1)
 	}; })( new Date() );
 //
 //	`(function () { ... })();` form somewhat resembles the isolated block structure in some other languages. (which might be simply expressed as `{ ... };`)
@@ -154,7 +154,7 @@
 	function _0 ( num ) {
 	return String( num > 9 ? num : "0" + num );
 	};
-// ---- END (0)
+// <<<< (0)
 	};
 </script>
 
