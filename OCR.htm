@@ -11,18 +11,12 @@
 	' - ' + getComputedStyle( x ).borderBottomWidth + ' )';
 
 	x.onkeydown = function ( e ) {
-	var s;
 	( e.keyCode === 0x09 /* 【Tab】 */
 	|| e.which === 0x09 ) && (
-/*
-	https://github.com/MasterInQuestion/Markup/commits/main/picdif.htm
-	https://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea#14166052
-*/
-	e.preventDefault(), s = this.selectionStart,
-	this.value = this.value.substring( 0, s ) +
-	'\t' + this.value.substring( this.selectionEnd ),
-	this.selectionEnd = s + 1 );
-// ^ Hacky DOM manipulation that recreates the whole text via selection info.
+// https://github.com/MasterInQuestion/Markup/commits/main/picdif.htm
+	e.preventDefault(),
+	document.execCommand( 'insertText', false, '\t' ) );
+// ^ https://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea#52918135
 	}; ">
 <!--
 	https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units#distance_units
