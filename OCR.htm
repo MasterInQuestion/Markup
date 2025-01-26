@@ -1,0 +1,36 @@
+<meta charset="UTF-8" />
+<title>OCR proofread helper</title>
+<!--
+	Simple OCR proofread helper. Note this doesn't help legacy browsers.
+	(cludged work after all)
+-->
+<body style="margin: 0" onload="
+	var x = document.getElementsByTagName( 'textarea' )[0];
+	x.style.height = 'calc( 100% - ' + getComputedStyle( document.getElementsByTagName( 'img' )[0] ).height +
+	' - ' + getComputedStyle( x ).borderTopWidth +
+	' - ' + getComputedStyle( x ).borderBottomWidth + ' )';
+
+	x.onkeydown = function ( e ) {
+	var s;
+	( e.keyCode === 0x09 /* 【Tab】 */
+	|| e.which === 0x09 ) && (
+/*
+	https://github.com/MasterInQuestion/Markup/commits/main/picdif.htm
+	https://stackoverflow.com/questions/6637341/use-tab-to-indent-in-textarea#14166052
+*/
+	e.preventDefault(), s = this.selectionStart,
+	this.value = this.value.substring( 0, s ) +
+	'\t' + this.value.substring( this.selectionEnd ),
+	this.selectionEnd = s + 1 );
+// ^ Hacky DOM manipulation that recreates the whole text via selection info.
+	}; ">
+<!--
+	https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units#distance_units
+	https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units#numbers_lengths_and_percentages
+-->
+<div style="overflow-y: auto; max-height: 50vh"
+><img src="" style="max-width: 100%" /></div>
+<textarea style="width: 100%; height: 100%; min-height: 50%; tab-size: 4;
+font-size: 100%"
+>
+</textarea>
