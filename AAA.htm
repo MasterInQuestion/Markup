@@ -4,7 +4,7 @@
 	a:hover { text-decoration: underline; }
 	a[ul] { text-decoration: underline; }
 </style>
-<body onload="var x = document.getElementsByTagName( 'a' ); for ( var i = 0; i < x.length; ++ i ) { !( x[i].href ) && ( x[i].href = x[i].innerText ); };">
+<body onload="var _ = ( typeof document.createElement( 'q' ).textContent === 'string' ? 1 : 0 ), x = document.getElementsByTagName( 'a' ); eval( 'for ( var i = 0; i < x.length; ++ i ) { !( x[i].href ) && ( x[i].href = x[i].' + ( _ ? 'textContent' : 'innerText' ) + ' ); };' );">
 <pre style="white-space: pre-wrap; word-wrap: break-word; tab-size: 4">
 = AΑА Αbsurdity of Unicode =
 
