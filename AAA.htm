@@ -4,27 +4,12 @@
 	a:hover { text-decoration: underline; }
 	a[ul] { text-decoration: underline; }
 </style>
-<script>
-	(function () {
-	function f () {
-	var _ = ( typeof document.createElement( "q" ).textContent === "string" ? 1 : 0 ),
-	x = document.getElementsByTagName( "a" );
-	eval( "for ( var i = 0; i < x.length; ++ i ) { \
-	!( x[i].href ) && ( x[i].href = x[i]." + ( _ ? "textContent" : "innerText" ) + " ); };" );
-	};
-
-	if ( typeof addEventListener === "function" ) {
-	addEventListener( "DOMContentLoaded", f, false );
-	} else {
-	onload = f; };
-	})();
-</script>
 <pre style="white-space: pre-wrap; word-wrap: break-word; tab-size: 4">
 = AΑА Αbsurdity of Unicode =
 
 	[
 	|*| Source: <a>https://github.com/MasterInQuestion/Markup/blob/main/AAA.htm</a>
-	|*| Last update: CE 2024-12-26 21:03 UTC ]
+	|*| Last update: CE 2025-08-30 20:34 UTC ]
 
 ----
 
@@ -75,4 +60,14 @@
 	<a>https://en.wiktionary.org/wiki/هير?action=history</a>
 	O, what redirected to what?..
 	Such couldn't even be solved by that extremely sophisticated <a ul href="https://unicode.org/reports/tr24/">Script Run</a>.
+	.
+	Another instance: "3З"
+|*| "3" (Digit 3) (U+0033, 0x33, &amp;#51;)
+|*| "З" (Cyrillic Capital Letter Ze) (U+0417, 0xD097, &amp;#1047;)
 </pre>
+<script>
+	var _ = ( typeof document.createElement( "q" ).textContent === "string" ? 1 : 0 ),
+	x = document.getElementsByTagName( "a" );
+	eval( "for ( var i = 0; i < x.length; ++ i ) { \
+	!( x[i].href ) && ( x[i].href = x[i]." + ( _ ? "textContent" : "innerText" ) + " ); };" );
+</script>
