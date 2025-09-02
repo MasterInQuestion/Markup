@@ -81,8 +81,7 @@
 
 	function toggleTitle ( x ) {
 	document.title = x.title;
-//	location.replace( location.href.replace( /(?:#.*)?$/, "#" + x.id ) );
-// ^ May cause unwanted viewport jump.
+	location.replace( location.href.replace( /(?:#.*)?$/, "#_" + x.id ) );
 	};
 
 	function kbd_toggle ( e ) {
